@@ -1,0 +1,492 @@
+@import url(reset.css);
+@import url(fonts.css);
+@import url(corporate.css);
+
+/* =============================================
+   VARIABLES
+============================================= */
+:root {
+  --fondo:        #e8e0d5;
+  --tarjeta-fondo: #ede5d8;
+  --borde:        #c9bfaf;
+  --texto-oscuro: #6b2d1f;
+  --texto-medio:  #8c6a5a;
+  --acento:       #8b2e1f;
+  --flecha:       #6b2d1f;
+
+  --fuente-serif: 'DM Serif Display', Georgia, serif;
+  --fuente-mono:  'DM Mono', monospace;
+  --fuente-averia: 'Averia Libre', cursive;
+}
+
+/* =============================================
+BASE / RESET
+============================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--fondo);
+  font-family: var(--fuente-mono);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* =============================================
+HEADINGS 
+============================================= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--fuente-averia);
+
+}
+
+/* =============================================
+NAVBAR
+============================================= */
+.barra {
+  width: 100%;
+  background-color: white;
+  border-bottom: 1px solid var(--borde);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.barra__contenedor {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* LOGO → AVERIA LIBRE */
+.barra__marca {
+  font-family: var(--fuente-averia);
+  font-size: 48px;
+  color: var(--acento);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.barra__menu {
+  display: flex;
+  list-style: none;
+  gap: 48px;
+}
+
+.barra__item {
+  display: inline-block;
+}
+
+.barra__enlace {
+  font-family: var(--fuente-mono);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--texto-oscuro);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.2s ease;
+  position: relative;
+  padding-bottom: 4px;
+}
+
+.barra__enlace::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--acento);
+  transition: width 0.3s ease;
+}
+
+.barra__enlace:hover {
+  color: var(--acento);
+}
+
+.barra__enlace:hover::after {
+  width: 100%;
+}
+
+/* =============================================
+HERO
+============================================= */
+.hero {
+  width: 100%;
+  height: 500px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--borde);
+}
+
+.hero__imagen {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero__imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.hero__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__etiqueta {
+  background: var(--acento);
+  padding: 24px 60px;
+  box-shadow: 0 8px 32px rgba(107, 45, 31, 0.4);
+}
+
+.hero__texto {
+  font-family: var(--fuente-averia);
+  font-size: 48px;
+  color: #ffffff;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+}
+
+/* =============================================
+TEXTO PRESENTACIÓN
+============================================= */
+h1 {
+  font-family: var(--fuente-averia);
+  font-size: 40px;
+  display: block;
+  text-align: center;         
+  margin: 40px 0 60px 0;       
+}
+
+.texto-presentacion {
+  color: var(--texto-oscuro);
+  position: relative;
+  text-align: center;       
+  margin: 60px 20px;        
+  line-height: 1.6;
+}
+
+/* =============================================
+CUADRÍCULA
+============================================= */
+.cuadricula {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+/* =============================================
+TARJETAS
+============================================= */
+.tarjeta {
+  flex: 1 1 calc(33.333%);
+  min-width: 180px;
+  aspect-ratio: 1 / 1;
+
+  background: var(--tarjeta-fondo);
+  border: 1px solid var(--borde);
+
+  display: flex;
+  flex-direction: column;
+  padding: 24px 28px 20px;
+
+  cursor: pointer;
+  transition: background 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tarjeta:hover {
+  background: #e4d9c8;
+}
+
+.tarjeta__cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.tarjeta__etiqueta {
+  font-family: var(--fuente-mono);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--texto-oscuro);
+  letter-spacing: 0.04em;
+}
+
+.tarjeta__numero {
+  font-family: var(--fuente-mono);
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--texto-oscuro);
+  letter-spacing: 0.04em;
+}
+
+.tarjeta__imagen {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 30px;
+  min-height: 0;
+}
+
+.tarjeta__imagen img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.35s ease;
+  filter: drop-shadow(0 6px 14px rgba(80, 40, 20, 0.18));
+}
+
+.tarjeta:hover .tarjeta__imagen img {
+  transform: scale(1.05) translateY(-3px);
+}
+
+.tarjeta__nombre {
+  font-family: var(--fuente-serif);
+  font-size: 15px;
+  color: var(--texto-oscuro);
+  line-height: 1.25;
+  text-align: center;
+  letter-spacing: 0.01em;
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.tarjeta__pie {
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.tarjeta__flecha {
+  font-size: 18px;
+  color: var(--flecha);
+  display: inline-block;
+  transition: transform 0.2s ease;
+  line-height: 1;
+}
+
+/* =============================================
+RESPONSIVE — TABLET
+============================================= */
+@media (max-width: 960px) {
+  .barra__contenedor {
+    padding: 16px 24px;
+  }
+
+  .barra__menu {
+    gap: 32px;
+  }
+
+  .hero {
+    height: 400px;
+  }
+
+  .hero__texto {
+    font-size: 40px;
+  }
+
+  .hero__etiqueta {
+    padding: 20px 50px;
+  }
+
+  .tarjeta {
+    flex: 1 1 calc(50%);
+  }
+}
+
+/* =============================================
+RESPONSIVE — MÓVIL
+============================================= */
+@media (max-width: 780px) {
+  .barra__contenedor {
+    padding: 12px 20px;
+  }
+
+  .hero {
+    height: 320px;
+  }
+
+  .hero__texto {
+    font-size: 32px;
+  }
+
+  .hero__etiqueta {
+    padding: 16px 40px;
+  }
+
+  .tarjeta {
+    flex: 1 1 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .barra__marca {
+    font-size: 24px;
+  }
+
+  .hero {
+    height: 280px;
+  }
+
+  .hero__texto {
+    font-size: 28px;
+  }
+}
+
+/* =============================================
+FOOTER / PIE DE PÁGINA
+============================================= */
+.pie {
+  width: 100%;
+  background-color: white;
+  border-top: 1px solid var(--borde);
+  padding: 60px 40px;
+}
+
+.pie__contenedor {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+.pie__columna {
+  flex: 1;
+}
+
+.pie__columna--izquierda {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pie__columna--derecha {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.pie__titulo {
+  font-family: var(--fuente-averia);
+  font-size: 56px;
+  color: var(--acento);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  margin: 0;
+}
+
+.pie__redes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pie__red {
+  font-family: var(--fuente-mono);
+  font-size: 20px;
+  color: var(--texto-oscuro);
+  letter-spacing: 0.05em;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.pie__red:hover {
+  color: var(--acento);
+}
+
+.pie__info {
+  font-family: var(--fuente-mono);
+  font-size: 20px;
+  color: var(--texto-oscuro);
+  letter-spacing: 0.02em;
+  font-weight: 300;
+  margin: 0;
+  line-height: 1.6;
+}
+
+/* =============================================
+RESPONSIVE FOOTER — TABLET
+============================================= */
+@media (max-width: 860px) {
+  .pie {
+    padding: 50px 30px;
+  }
+
+  .pie__contenedor {
+    gap: 60px;
+  }
+
+  .pie__titulo {
+    font-size: 48px;
+  }
+}
+
+/* =============================================
+RESPONSIVE FOOTER — MÓVIL
+============================================= */
+@media (max-width: 680px) {
+  .pie {
+    padding: 40px 20px;
+  }
+
+  .pie__contenedor {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .pie__columna--derecha {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .pie__titulo {
+    font-size: 40px;
+  }
+
+  .pie__info {
+    font-size: 12px;
+  }
+
+  .pie__red {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .pie__titulo {
+    font-size: 36px;
+  }
+}
